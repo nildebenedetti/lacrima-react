@@ -7,7 +7,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
-                    <img src="../logos/lacrima-unicorn-txt-logo.png" alt="lacrima-unicorn-text-logo" height="100" ></img>
+                    <img src="../logos/lacrima-unicorn-logo.png" alt="lacrima-unicorn-text-logo" height="90" ></img>
                 </Link>
 
                 <button
