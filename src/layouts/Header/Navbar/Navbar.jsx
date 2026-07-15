@@ -8,7 +8,7 @@ function Navbar() {
         <nav className={`navbar navbar-expand-lg bg-body-tertiary ${style.text}`}>
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
-                    <img src="../logos/lacrima-unicorn-logo.png" alt="lacrima-unicorn-logo" className={style.logoImg} ></img>
+                    <img src="/logos/lacrima-unicorn-logo.png" alt="lacrima-unicorn-logo" className={style.logoImg} ></img>
                 </Link>
 
                 <button
