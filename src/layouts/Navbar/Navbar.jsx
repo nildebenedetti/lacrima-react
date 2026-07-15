@@ -1,13 +1,14 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
+import style from "./Navbar.module.css";
 
 function Navbar() {
 
     return <>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className={`navbar navbar-expand-lg bg-body-tertiary ${style.text}`}>
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
-                    <img src="../logos/lacrima-unicorn-logo.png" alt="lacrima-unicorn-text-logo" height="90" ></img>
+                    <img src="../logos/lacrima-unicorn-logo.png" alt="lacrima-unicorn-logo" className={style.logoImg} ></img>
                 </Link>
 
                 <button
@@ -72,7 +73,7 @@ function Navbar() {
                             type="search"
                             placeholder="Search"
                         />
-                        <button className="btn btn-outline-success disabled" type="submit">
+                        <button className="btn btn-outline-dark disabled" type="submit">
                             Search
                         </button>
                     </form>
