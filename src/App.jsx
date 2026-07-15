@@ -1,14 +1,19 @@
+import React from "react";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 import './App.css'
+import AppLayout from "./layouts/AppLayout/AppLayout.jsx";
+import Home from './pages/Home.jsx';
 
 function App() {
 
   return <>
-    <div className="main d-flex justify-content-center align-items-center">
-      <div className="title-wrapper">
-        <h1 className="p-5">Hello Lacrima!</h1>
-        <p>Beauty belongs to those who still dare to feel.</p>
-      </div>
-    </div>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<AppLayout/>}>
+          <Route index element={<Home/>}/>
+        </Route>
+      </Routes>
+      </BrowserRouter>
   </>
 }
 
