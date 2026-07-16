@@ -1,10 +1,19 @@
 
+/*===== FONTS ======*/
 
-.main {
-  min-height: 80vh;
-  min-width: 70vh;
+body {
+  font-family: "Manrope", sans-serif;
+  font-weight: 300;
+  color: #6E6863;
 }
- 
- h1 {
-   color: darkslategrey;
- }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Bellefair", serif;
+  color: #47433F;
+  font-weight: 400;
+  text-transform: uppercase;
+}

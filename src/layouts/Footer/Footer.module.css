@@ -1,0 +1,23 @@
+.logoImg {
+    min-width: 150px;
+}
+
+
+.mailIcon {
+    font-size: 20px;
+    margin-left: 2px;
+    margin-right: 3px;
+}
+
+.phoneIcon {
+    font-size: 14px;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.locationIcon {
+    font-size: 14px;
+    margin-right: 4px;
+    margin-left: 5px;
+    transform: translate(0, -2px);
+}
