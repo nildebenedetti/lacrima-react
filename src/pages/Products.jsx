@@ -23,10 +23,14 @@ function Products() {
 
     console.log("Tipo di products:", typeof products, products);
 
-    return <>
-        {Array.isArray(products) && products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-        ))}
+    return <> <div className="container">
+        <div className="row justify-content-center">
+            {Array.isArray(products) && products.map((product) => (
+                <ProductCard key={product.slug} product={product} />
+            ))}
+        </div>
+    </div>
+
     </>
 }
 
