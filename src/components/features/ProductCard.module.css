@@ -1,0 +1,126 @@
+/* Grids and padding are handled with bootstrap
+All the rest - including flex behaviour - shall be handled in the style module */
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s ease;
+}
+
+.productCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196, 181, 253, 0.6);
+    box-shadow:
+        0 12px 32px -8px rgba(196, 181, 253, 0.35),
+        /* violet glow */
+        0 8px 20px -6px rgba(165, 243, 252, 0.25)
+        /* light blue glo
+        w*/
+}
+
+.cardHeader {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 22px;
+
+    .favHeart {
+        font-size: 26px;
+        position: absolute;
+        transform: translateY(60%);
+        color: #121212;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+            color 0.3s ease,
+            filter 0.3s ease;
+        cursor: pointer;
+    }
+
+
+/* il cuore a hover si sposta troppo in alto, uscendo dalla card, come lo rendo migliore? come lo riempio?*/
+.favHeart:hover {
+    color: #b388ff !important;
+    filter: drop-shadow(0 0 8px rgba(179, 136, 255, 0.6));
+    transform: translateY(60%) scale(1.125);
+}
+
+
+}
+
+.cardImg {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.productCard:hover .cardImg {
+    transform: scale(1.03);
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    .cardTitle {
+        font-size: 20px;
+    }
+}
+
+.cardBottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 10px;
+
+    .cardPrice {
+        font-size: 18px;
+    }
+
+    /* LO VORREI RENDERE UN PO`MENO AZZURRO */
+    .cartBtn {
+        position: relative;
+        background: #121212;
+        color: #fff;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .cartBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #c4b5fd 0%, #a5f3fc 100%);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.4s ease;
+    }
+
+    .cartBtn:hover::before {
+        opacity: 1;
+
+        .cartBtn:hover {
+            color: #121212;
+            box-shadow: 0 4px 15px rgba(196, 181, 253, 0.4);
+        }
+    }
+
+}
