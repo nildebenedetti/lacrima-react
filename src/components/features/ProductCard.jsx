@@ -18,10 +18,11 @@ function ProductCard({ product }) {
                         </span>
                 </div>
                 <Link to={`/products/${product.slug}`}>
-                    <img src={`${API_BASE_URL}/${product.image_main}`} className={`${styles.cardImg}`} alt="..."></img>
+                    <img src={`${API_BASE_URL}/${product.image_main}`} className={`${styles.cardImg}`} alt={product.slug}></img>
                 </Link>
                 <div className={`${styles.cardBody}`}>
-                    <p className={`${styles.cardTitle} px-3`}>{product.name || "Product Name"}</p>
+                    <p className={`${styles.cardTitle} px-3`}>{product.name}</p>
+                    <p className={styles.cardHeadline}>{product.headline}</p>
                     <div className="d-flex justify-content-between align-items-baseline py-3">
                     </div>
                     <div className={`${styles.cardBottom} px-3`}>

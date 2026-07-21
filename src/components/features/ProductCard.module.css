@@ -76,7 +76,10 @@ All the rest - including flex behaviour - shall be handled in the style module *
     flex-basis: 0;
 
     .cardTitle {
-        font-size: 20px;
+        font-size: clamp(1rem, 1.1rem + 0.3vw, 1.5rem);
+    }
+    .cardHeadline {
+        text-decoration: overline;
     }
 }
 
