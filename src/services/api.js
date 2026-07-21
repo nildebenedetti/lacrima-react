@@ -1,12 +1,9 @@
-const URL = import.meta.env.VITE_SERVER_URL || "localhost";
-const PORT = import.meta.env.VITE_SERVER_PORT || 3000;
-
-const API_URL = `http://${URL}:${PORT}`;
+import { API_BASE_URL } from "./connectionUtils.JS";
 
 const api = {
     async getProducts() {
             try {
-                const response = await fetch(`${API_URL}/products`);
+                const response = await fetch(`${API_BASE_URL}/products`);
 
                 if (!response.ok) {
                     throw new Error("An error occourred when loading data", error);

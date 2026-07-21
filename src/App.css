@@ -4,7 +4,8 @@
 body {
   font-family: "Manrope", sans-serif;
   font-weight: 300;
-  color: #6E6863;
+  color: #121212;
+  background-color: #fafafa;
 }
 
 h1,
@@ -13,7 +14,7 @@ h3,
 h4,
 h5 {
   font-family: "Bellefair", serif;
-  color: #47433F;
+  color: #121212;
   font-weight: 400;
   text-transform: uppercase;
 }

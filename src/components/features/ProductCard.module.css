@@ -1,0 +1,190 @@
+/* Grids and padding are handled with bootstrap
+All the rest - including flex behaviour - shall be handled in the style module */
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s ease;
+}
+
+.productCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196, 181, 253, 0.6);
+    box-shadow:
+        0 12px 32px -8px rgba(196, 181, 253, 0.35),
+        /* violet glow */
+        0 8px 20px -6px rgba(165, 243, 252, 0.25)
+        /* light blue glo
+        w*/
+}
+
+.cardHeader {
+    z-index: 10;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 22px;
+
+    .newBadge {
+        background-color: #b388ff !important;
+        filter: drop-shadow(0 0 8px rgba(179, 136, 255, 0.6));
+
+        /* Posizione iniziale (translateY) e scala base */
+        transform: translateY(60%) scale(1);
+        transform-origin: center center;
+
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        /* Transizione fluida e pulita (rimossa la riga duplicata) */
+        will-change: transform, filter;
+        transition: transform 0.25s ease-out, filter 0.25s ease-out;
+    }
+
+    .newBadge::before {
+        content: '';
+        pointer-events: none;
+        /* Anti-flicker */
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                transparent 100%);
+        transform: skewX(-20deg);
+        transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .newBadge:hover {
+        cursor: pointer;
+        filter: drop-shadow(0 0 10px rgba(179, 136, 255, 0.8));
+
+        /* FONDAMENTALE: Mantiene translateY(60%) e applica solo lo zoom! */
+        transform: translateY(60%) scale(1.125);
+    }
+
+    .newBadge:hover::before {
+        left: 150%;
+    }
+
+    .favHeart {
+        font-size: 26px;
+        transform: translateY(25%);
+        color: #121212;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+            color 0.3s ease,
+            filter 0.3s ease;
+        cursor: pointer;
+    }
+
+
+    .favHeart:hover {
+        color: #b388ff !important;
+        filter: drop-shadow(0 0 8px rgba(179, 136, 255, 0.6));
+        transform: translateY(25%) scale(1.125);
+    }
+
+
+}
+
+.cardImg {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.productCard:hover .cardImg {
+    transform: scale(1.03);
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    .productLine {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: #8e8e93;
+        margin-bottom: 0.25rem;
+    }
+
+    .cardTitle {
+        font-size: clamp(0.8rem, 1rem + 0.3vw, 1.5rem);
+        margin-bottom: 5px !important;
+    }
+
+    .cardHeadline,
+    .productSize {
+        font-size: clamp(0.5rem, 0.7rem + 0.2vw, 1.1rem);
+    }
+
+
+}
+
+.cardBottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 10px;
+
+    .cardPrice {
+        font-size: 18px;
+    }
+
+    /* LO VORREI RENDERE UN PO`MENO AZZURRO */
+    .cartBtn {
+        position: relative;
+        background: #121212;
+        color: #fff;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .cartBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #b388ff !important;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.4s ease;
+    }
+
+    .cartBtn:hover::before {
+        opacity: 1;
+
+        .cartBtn:hover {
+            color: #121212;
+            box-shadow: 0 4px 15px rgba(196, 181, 253, 0.4);
+        }
+    }
+
+}
