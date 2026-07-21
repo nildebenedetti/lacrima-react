@@ -27,17 +27,65 @@ All the rest - including flex behaviour - shall be handled in the style module *
 }
 
 .cardHeader {
-    position: relative;
     z-index: 10;
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 0 22px;
+
+    .newBadge {
+        background-color: #b388ff !important;
+        filter: drop-shadow(0 0 8px rgba(179, 136, 255, 0.6));
+
+        /* Posizione iniziale (translateY) e scala base */
+        transform: translateY(60%) scale(1);
+        transform-origin: center center;
+
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        /* Transizione fluida e pulita (rimossa la riga duplicata) */
+        will-change: transform, filter;
+        transition: transform 0.25s ease-out, filter 0.25s ease-out;
+    }
+
+    .newBadge::before {
+        content: '';
+        pointer-events: none;
+        /* Anti-flicker */
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                transparent 100%);
+        transform: skewX(-20deg);
+        transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .newBadge:hover {
+        cursor: pointer;
+        filter: drop-shadow(0 0 10px rgba(179, 136, 255, 0.8));
+
+        /* FONDAMENTALE: Mantiene translateY(60%) e applica solo lo zoom! */
+        transform: translateY(60%) scale(1.125);
+    }
+
+    .newBadge:hover::before {
+        left: 150%;
+    }
 
     .favHeart {
         font-size: 26px;
-        position: absolute;
-        transform: translateY(60%);
+        transform: translateY(25%);
         color: #121212;
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
             color 0.3s ease,
@@ -46,18 +94,17 @@ All the rest - including flex behaviour - shall be handled in the style module *
     }
 
 
-/* il cuore a hover si sposta troppo in alto, uscendo dalla card, come lo rendo migliore? come lo riempio?*/
-.favHeart:hover {
-    color: #b388ff !important;
-    filter: drop-shadow(0 0 8px rgba(179, 136, 255, 0.6));
-    transform: translateY(60%) scale(1.125);
-}
+    .favHeart:hover {
+        color: #b388ff !important;
+        filter: drop-shadow(0 0 8px rgba(179, 136, 255, 0.6));
+        transform: translateY(25%) scale(1.125);
+    }
 
 
 }
 
 .cardImg {
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     object-fit: cover;
     width: 100%;
     display: block;
@@ -75,12 +122,26 @@ All the rest - including flex behaviour - shall be handled in the style module *
     flex-shrink: 1;
     flex-basis: 0;
 
+    .productLine {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: #8e8e93;
+        margin-bottom: 0.25rem;
+    }
+
     .cardTitle {
-        font-size: clamp(1rem, 1.1rem + 0.3vw, 1.5rem);
+        font-size: clamp(0.8rem, 1rem + 0.3vw, 1.5rem);
+        margin-bottom: 5px !important;
     }
-    .cardHeadline {
-        text-decoration: overline;
+
+    .cardHeadline,
+    .productSize {
+        font-size: clamp(0.5rem, 0.7rem + 0.2vw, 1.1rem);
     }
+
+
 }
 
 .cardBottom {
@@ -111,7 +172,7 @@ All the rest - including flex behaviour - shall be handled in the style module *
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, #c4b5fd 0%, #a5f3fc 100%);
+        background: #b388ff !important;
         opacity: 0;
         z-index: -1;
         transition: opacity 0.4s ease;
